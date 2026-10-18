@@ -1,4 +1,4 @@
-VOID PHOTO MODE - Dishonored 2 - 0.8.0-rc3
+VOID PHOTO MODE - Dishonored 2 - 0.8.0
 
 INSTALL
 Close the game. Copy dinput8.dll and the VoidPhotoMode folder beside
@@ -46,5 +46,5 @@ Close the game and remove this package's dinput8.dll and VoidPhotoMode folder.
 Original game archives are never edited. Photos and user settings remain;
 remove those separately only if you no longer want them.
 
-This is a release candidate tested on one executable/machine, not a broad
-compatibility release. See THIRD_PARTY_NOTICES.txt for acknowledgements and LICENSE for this mod's MIT license. Both are included inside the VoidPhotoMode folder.
+This release has been tested on one executable/machine. Compatibility with
+other builds and systems has not been verified. See THIRD_PARTY_NOTICES.txt for acknowledgements and LICENSE for this mod's MIT license. Both are included inside the VoidPhotoMode folder.

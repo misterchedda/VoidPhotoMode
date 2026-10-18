@@ -99,7 +99,7 @@ const char *stateName() {
 std::string status() {
     Camera c = *camera;
     std::ostringstream s;
-    s << std::setprecision(9) << "{\"ok\":true,\"version\":\"0.8.0-rc3\",\"state\":\"" << stateName()
+    s << std::setprecision(9) << "{\"ok\":true,\"version\":\"0.8.0\",\"state\":\"" << stateName()
       << "\",\"ticks\":" << ticks.load() << ",\"engine_thread\":" << pumpThread.load()
       << ",\"ansel\":" << (session() ? "true" : "false")
       << ",\"camera_valid\":" << (valid(c) ? "true" : "false") << ",\"position\":[" << c.position[0] << ','
@@ -426,7 +426,7 @@ DWORD WINAPI worker(void *) {
         OutputDebugStringA(initializationError.c_str());
         return 1;
     }
-    log("Starting Void Photo Mode 0.8.0-rc3");
+    log("Starting Void Photo Mode 0.8.0");
     base = reinterpret_cast<uintptr_t>(GetModuleHandleW(L"Dishonored2.exe"));
     if (!base || !Runtime::supportedExecutable() || !validate()) {
         log("REFUSED: unsupported executable or runtime layout; game left unchanged");
@@ -448,7 +448,7 @@ DWORD WINAPI worker(void *) {
         MH_Uninitialize();
         return 1;
     }
-    log("Ready v0.8.0-rc3. F6 photo mode, F9 panel, F10 PNG capture, hold RMB to look. Native post-FX "
+    log("Ready v0.8.0. F6 photo mode, F9 panel, F10 PNG capture, hold RMB to look. Native post-FX "
         "controls installed.");
     return 0;
 }
