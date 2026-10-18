@@ -1,0 +1,37 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "windows",
+      "displayName": "Visual Studio 2022 x64",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "BUILD_TESTING": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "release",
+      "configurePreset": "windows",
+      "configuration": "Release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "release",
+      "configurePreset": "windows",
+      "configuration": "Release",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}

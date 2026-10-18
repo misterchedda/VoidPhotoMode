@@ -1,0 +1,50 @@
+VOID PHOTO MODE - Dishonored 2 - 0.8.0-rc3
+
+INSTALL
+Close the game. Copy dinput8.dll and the VoidPhotoMode folder beside
+Dishonored2.exe. Launch the game normally through Steam; no injector needed.
+If dinput8.dll already exists, do not overwrite it: this loader does not yet
+support chaining with another mod loader. Do not use an older manual injector
+at the same time.
+
+REQUIREMENTS
+Windows x64 and the tested Steam Dishonored 2 executable v1.77.9.0:
+SHA-256 b671f8249422862bf557d00aab2f4bb671ed4515cc10ad8a8a9decad84516180
+Other executable builds are refused before installing hooks. No separate
+VC++ redistributable, Python, Java, Ghidra or injector is needed for this mod.
+The game retains its own normal prerequisites. Capture supports 8-bit SDR;
+HDR capture and compatibility with other graphics/injection mods are untested.
+
+CONTROLS
+F6: enter/leave photo mode (load a level and close the pause menu first).
+Hold right mouse: look. Release: use the panel. WASD: move; Q/E: down/up.
+Wheel: movement speed. Shift: faster. Ctrl: slower.
+F8: reset the current page's camera/effects. F9: hide/show interface.
+Alt-Tab/focus loss: end photo mode and restore normal game UI/input.
+F10: save a PNG. Escape: return to gameplay. F7: toggle game HUD.
+The native panel also offers camera, effects, focus and color controls,
+composition guides, draggable sliders and clickable action buttons.
+
+PHOTOS AND SETTINGS
+Photos default to your Windows Pictures folder / Dishonored 2 / Photo Mode.
+The folder is created on first capture. Names include timestamp and sequence;
+existing photos are never overwritten. Capture briefly hides the UI and
+holds camera input while reading the final game buffer, then restores it.
+
+Settings and logs are in %LOCALAPPDATA%\Dishonored2PhotoMode.
+To choose a different output location, close the game and edit settings.ini:
+  [PhotoMode]
+  CaptureDirectory=D:\My Photos\Dishonored 2
+Use an absolute path without quotes. Environment variables are supported.
+Leave empty for the default. For non-ASCII paths save the INI as UTF-16 LE
+with BOM. Restart the game after changing settings.
+photo-mode.log records the selected folder, initialization and capture errors;
+photo-mode.previous.log retains the preceding session.
+
+UNINSTALL
+Close the game and remove this package's dinput8.dll and VoidPhotoMode folder.
+Original game archives are never edited. Photos and user settings remain;
+remove those separately only if you no longer want them.
+
+This is a release candidate tested on one executable/machine, not a broad
+compatibility release. See THIRD_PARTY_NOTICES.txt for acknowledgements.
