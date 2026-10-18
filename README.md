@@ -18,7 +18,7 @@ release folder including instructions and third-party notices:
 
 ```powershell
 cmake --install build --config Release --prefix dist
-Compress-Archive -Path dist/* -DestinationPath VoidPhotoMode.zip
+python tools/package_release.py dist VoidPhotoMode.zip
 ```
 
 ## Compatibility and tests
@@ -43,4 +43,3 @@ ctest --preset release
 Frans Bouma's published Dishonored 2 camera research informed the camera
 layout, coordinate conventions and Ansel integration. MinHook is vendored
 under `third_party/MinHook`.
-

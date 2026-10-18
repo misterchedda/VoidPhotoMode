@@ -1,0 +1,60 @@
+name: Windows build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-2022
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Check generated UI contract
+        run: python tools/generate_contract.py --check
+
+      - name: Configure
+        run: cmake --preset windows
+
+      - name: Build Release
+        run: cmake --build --preset release --parallel 2
+
+      - name: Test (hardware GPU tests run locally)
+        run: ctest --preset release --no-tests=error -E '^color_gpu(_deferred)?$'
+
+      - name: Stage install files
+        run: cmake --install build --config Release --prefix dist
+
+      - name: Validate and zip package
+        run: python tools/package_release.py dist build/VoidPhotoMode-windows-x64.zip
+
+      - name: Upload install ZIP
+        uses: actions/upload-artifact@v7
+        with:
+          path: build/VoidPhotoMode-windows-x64.zip
+          archive: false
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload test log on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-log
+          path: build/Testing/Temporary/LastTest.log
+          if-no-files-found: ignore
+          retention-days: 7

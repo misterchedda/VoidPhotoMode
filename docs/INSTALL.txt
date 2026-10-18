@@ -47,4 +47,4 @@ Original game archives are never edited. Photos and user settings remain;
 remove those separately only if you no longer want them.
 
 This is a release candidate tested on one executable/machine, not a broad
-compatibility release. See THIRD_PARTY_NOTICES.txt for acknowledgements.
+compatibility release. See THIRD_PARTY_NOTICES.txt for acknowledgements and LICENSE for this mod's MIT license. Both are included inside the VoidPhotoMode folder.
